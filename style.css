@@ -384,3 +384,23 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+
+@media screen and (max-width: 600px) {
+    .imagem-sobreposta {
+        position: relative;
+        margin-top: 0; /* Remove a margem negativa */
+        margin-bottom: 20px; /* Espaço abaixo da logo */
+    }
+
+    .service-grid {
+        flex-direction: column; /* Coloca os cards um abaixo do outro */
+        align-items: center; /* Centraliza os cards */
+    }
+
+    .service-card {
+        width: 90%; /* Torna os cards mais largos em telas pequenas */
+        margin-bottom: 20px; /* Espaço entre os cards */
+    }
+}
+

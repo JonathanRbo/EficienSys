@@ -1,7 +1,7 @@
 body {
     margin: 0;
     background-color: #222;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica;
     color: floralwhite;
 }
 h4{
@@ -96,7 +96,7 @@ h4{
 }
 
 .section-container {
-    max-width: 85%;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -149,13 +149,6 @@ h4{
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5), inset 0 0 0.5em rgba(0, 0, 0, 0.7);
     transform: scale(1.05);
 }
-
-.aumenta:hover {
-    transform: scale(1.05);
-    transition: transform 0.5s ease, box-shadow 0.2s ease;
-}
-
-
 
 .service-card h4 {
     font-size: 220%;
@@ -381,9 +374,9 @@ span.psw {
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+    height: 300px;
 }
+
 
 
 @media screen and (max-width: 600px) {

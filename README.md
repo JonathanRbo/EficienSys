@@ -178,7 +178,7 @@ As cores principais do sistema são:
 
 ## Autor
 
-Desenvolvido como projeto de demonstração de sistema de comunicação empresarial.
+© 2026 Jonathan Ribeiro. Desenvolvido com 💙 e muito café. 
 
 ---
 

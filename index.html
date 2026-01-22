@@ -4,92 +4,1155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="148x148" href="imagens/logoEficieSys.png">
-    <link rel="stylesheet" href="style.css">
-    <title>EficienSys - Inicio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
+    <title>EficienSys - Revolucione sua Comunicacao Empresarial</title>
 
-.service-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; /* ou space-between */
-}
+    <!-- Squeleton CSS -->
+    <link rel="stylesheet" href="https://cdn.squeleton.dev/squeleton.v4.min.css">
+    <!-- Squeleton JS Main -->
+    <script src="https://cdn.squeleton.dev/squeleton-main.v4.min.js"></script>
 
-.service-card {
-    flex: 1 1 300px; /* Altera o tamanho mínimo das cartas */
-    margin: 10px; /* Espaçamento entre as cartas */
-    text-align: center; /* Centraliza o texto dentro das cartas */
-}
-</style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --green-50: #ecfdf5;
+            --green-100: #d1fae5;
+            --green-200: #a7f3d0;
+            --green-300: #6ee7b7;
+            --green-400: #34d399;
+            --green-500: #10b981;
+            --green-600: #059669;
+            --green-700: #047857;
+            --green-800: #065f46;
+            --green-900: #064e3b;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--white);
+            color: var(--gray-800);
+            overflow-x: hidden;
+        }
+
+        /* Blob Shapes */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .blob-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--green-200);
+            top: -200px;
+            right: -100px;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--green-300);
+            bottom: -100px;
+            left: -100px;
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--green-100);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gray-100);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--gray-900);
+        }
+
+        .nav-logo img {
+            height: 45px;
+        }
+
+        .nav-logo span {
+            font-weight: 800;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, var(--green-600) 0%, var(--green-500) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-link {
+            color: var(--gray-600);
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--green-600);
+            background: var(--green-50);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--green-500) 0%, var(--green-600) 100%);
+            color: white !important;
+            padding: 10px 24px !important;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+            background: linear-gradient(135deg, var(--green-400) 0%, var(--green-500) 100%) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--white) 0%, var(--green-50) 100%);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green-100);
+            color: var(--green-700);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--green-500);
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            color: var(--gray-900);
+            margin-bottom: 24px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--green-500) 0%, var(--green-400) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--gray-500);
+            line-height: 1.7;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--green-500) 0%, var(--green-600) 100%);
+            color: white;
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--gray-700);
+            border: 2px solid var(--gray-200);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--green-500);
+            color: var(--green-600);
+            background: var(--green-50);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+            filter: drop-shadow(0 30px 60px rgba(16, 185, 129, 0.25));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--green-600);
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+        }
+
+        /* Section Styles */
+        .section-tag {
+            display: inline-block;
+            background: var(--green-100);
+            color: var(--green-700);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-500);
+            max-width: 600px;
+        }
+
+        /* Features Section */
+        .features {
+            background: var(--white);
+            position: relative;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border: 1px solid var(--gray-100);
+            border-radius: 24px;
+            padding: 40px 32px;
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+            border-color: var(--green-200);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--green-100) 0%, var(--green-50) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 1.8rem;
+            color: var(--green-600);
+        }
+
+        .feature-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--gray-500);
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, var(--green-50) 0%, var(--white) 100%);
+            position: relative;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .check-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .check-list li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--green-500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .check-list h4 {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+
+        .check-list p {
+            color: var(--gray-500);
+            font-size: 0.95rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: var(--gray-900);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 400px;
+            background: linear-gradient(180deg, var(--green-900) 0%, transparent 100%);
+            opacity: 0.5;
+        }
+
+        .pricing .section-title,
+        .pricing .section-subtitle {
+            color: var(--white);
+        }
+
+        .pricing .section-subtitle {
+            color: var(--gray-400);
+        }
+
+        .price-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px 32px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+        }
+
+        .price-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--green-500);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .price-card.popular {
+            border: 2px solid var(--green-500);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--green-400) 0%, var(--green-500) 100%);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .price-card h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .price-card h3 span {
+            color: var(--green-400);
+        }
+
+        .price-card .price-desc {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .price-value {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .price-value .currency {
+            color: var(--green-400);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .price-value .amount {
+            color: var(--white);
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+
+        .price-value .period {
+            color: var(--gray-500);
+            font-size: 1rem;
+        }
+
+        .price-features {
+            list-style: none;
+            padding: 24px 0;
+            margin: 24px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .price-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--gray-300);
+            padding: 10px 0;
+            font-size: 0.95rem;
+        }
+
+        .price-features li span {
+            color: var(--green-400);
+        }
+
+        .price-card .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .price-card .btn-outline {
+            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+        }
+
+        .price-card .btn-outline:hover {
+            background: var(--green-500);
+            border-color: var(--green-500);
+            color: white;
+        }
+
+        /* Team Section */
+        .team {
+            background: var(--white);
+        }
+
+        .team-card {
+            background: var(--gray-50);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .team-card:hover {
+            background: var(--white);
+            border-color: var(--green-200);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .team-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--green-500) 0%, var(--green-400) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .team-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .team-card h4 span {
+            color: var(--green-500);
+        }
+
+        .team-card p {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(180deg, var(--white) 0%, var(--green-50) 100%);
+        }
+
+        .contact-form {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 48px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--gray-100);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: var(--gray-50);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--green-500);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: var(--gray-400);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: var(--white);
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo p {
+            color: var(--gray-400);
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            margin-top: 40px;
+        }
+
+        .footer-bottom p {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 24px;
+            }
+
+            .stat-item {
+                flex: 1 1 calc(50% - 12px);
+            }
+
+            .contact-form {
+                padding: 32px 24px;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--green-500);
+            border-radius: 4px;
+        }
+
+        /* Selection */
+        ::selection {
+            background: var(--green-200);
+            color: var(--green-900);
+        }
+    </style>
 </head>
-<body class="container">
-    
-    <!--Cabecario-->
-    <header class="cabecario">
-        <a class="active" href="">Inicio</a>
-        <a href="patrocinadores.html">Patrocinadores</a>
-        <a href="suporte.html">Suporte</a>
-        
-    </header>
+<body>
 
-    <!--Main Destaque-->
-    <main class="destaque" >
-        <img src="imagens/imgFundo.jpg" style="height: 70%; max-width: 100%;" class="imagem-fundo" title="fundo" >
-        <img src="imagens/logoEficieSys.png" style="max-width: 100%;" class="imagem-sobreposta aumenta" title="logo">
-        
-    </main>
+    <!-- Navigation -->
+    <nav class="navbar p-15-tb" id="navbar">
+        <div class="container">
+            <div class="d-flex f-items-center f-justify-between">
+                <a href="#" class="nav-logo">
+                    <img src="imagens/logoEficieSys.png" alt="EficienSys">
+                    <span>EficienSys</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#inicio" class="nav-link">Inicio</a>
+                    <a href="#beneficios" class="nav-link">Beneficios</a>
+                    <a href="#sobre" class="nav-link">Sobre</a>
+                    <a href="#planos" class="nav-link">Planos</a>
+                    <a href="#contato" class="nav-link nav-cta">Fale Conosco</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <!--Main Main-->
-    <main class="main">
-        <center><p class="topic" style="color: white; font-size: 50px; margin-top: 3%; ">Beneficios de usar o EficienSys:</p></center>
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="hero p-100-t">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
 
-        <section id="target2">
-            <section class="service">
-                <div class="section-container service-container" style="max-width: 80%;">
-                    
-                    
-                    <div class="service-grid">
-                        <div class="service-card">
-                            <i class="ri-smartphone-line"></i>
-                            <h4>Sustentabilidade:</h4>
-                            <p>Ao reduzir a necessidade de comunicação em papel e minimizar erros operacionais que podem levar a desperdícios, EficienSys contribui para práticas mais sustentáveis. Além disso, a eficiência na comunicação leva a um melhor uso dos recursos, apoiando uma operação mais ecológica e responsável.
-                            </p>
-                            
+            <div class="container p-60-tb">
+                <div class="row f-items-center gap-40">
+                    <div class="c-xs-12 c-md-6 wow fadeInUp">
+                        <div class="hero-badge">Novo: Integracao com IA disponivel</div>
+                        <h1 class="hero-title">
+                            Conecte sua equipe de forma <span>inteligente</span>
+                        </h1>
+                        <p class="hero-description">
+                            Transforme a comunicacao da sua empresa com uma plataforma que une
+                            gerentes e colaboradores em tempo real, aumentando produtividade e seguranca.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#planos" class="btn btn-primary">
+                                <span class="iccon-rocket-1"></span>
+                                Comecar Agora
+                            </a>
+                            <a href="#sobre" class="btn btn-outline">
+                                <span class="iccon-play-1"></span>
+                                Como Funciona
+                            </a>
                         </div>
-        
-                        <div class="service-card">
-                            <i class="ri-smartphone-line"></i>
-                            <h4>Conforto:</h4>
-                            <p>A comunicação fluida proporcionada pelo EficienSys melhora a relação entre gerentes e trabalhadores, criando um ambiente de trabalho mais harmonioso e confortável. Ao facilitar a troca de informações e feedbacks, o sistema ajuda a reduzir o estresse e a pressão, promovendo um local de trabalho mais acolhedor.
-                            </p>
-                            
+
+                        <div class="hero-stats xs-d-none">
+                            <div class="stat-item wow fadeInUp" data-wow-delay="0.1s">
+                                <h3>500+</h3>
+                                <p>Empresas Ativas</p>
+                            </div>
+                            <div class="stat-item wow fadeInUp" data-wow-delay="0.2s">
+                                <h3>98%</h3>
+                                <p>Taxa de Satisfacao</p>
+                            </div>
+                            <div class="stat-item wow fadeInUp" data-wow-delay="0.3s">
+                                <h3>24/7</h3>
+                                <p>Suporte Dedicado</p>
+                            </div>
                         </div>
-                        <div class="service-card">
-                            <i class="ri-edit-2-line"></i>
-                            <h4>Segurança:</h4>
-                            <p>Prioriza a segurança ao permitir que os trabalhadores reportem falhas e incidentes em tempo real, garantindo que os gerentes possam agir rapidamente para mitigar riscos e evitar acidentes. Isso cria um ambiente de trabalho mais seguro, onde todos se sentem protegidos e cuidados.
-                            </p>
-                            
+                    </div>
+                    <div class="c-xs-12 c-md-6 text-center wow fadeInRight">
+                        <div class="hero-image">
+                            <img src="imagens/logoEficieSys.png" alt="EficienSys Platform">
                         </div>
-        
-                        <div class="service-card">
-                            <i class="ri-edit-2-line"></i>
-                            <h4>Acessibilidade:</h4>
-                            <p>É projetado para ser acessível a todos os usuários, independentemente de sua habilidade técnica. Com uma interface intuitiva e fácil de usar, trabalhadores de diferentes níveis de conhecimento tecnológico podem interagir com o sistema sem dificuldades, assegurando que todos tenham voz no processo de comunicação.
-                            </p>    
-                        </div>
-                        
                     </div>
                 </div>
-            </section>
+            </div>
         </section>
 
-        
+        <!-- Features Section -->
+        <section id="beneficios" class="features p-80-tb xs-p-50-tb">
+            <div class="container">
+                <div class="text-center m-60-b wow fadeInUp">
+                    <span class="section-tag">Beneficios</span>
+                    <h2 class="section-title">Por que escolher o EficienSys?</h2>
+                    <p class="section-subtitle m-auto-lr">
+                        Nossa plataforma foi projetada pensando nas necessidades reais das empresas modernas.
+                    </p>
+                </div>
 
+                <div class="row gap-25">
+                    <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <span class="iccon-leaf-1"></span>
+                            </div>
+                            <h3>Sustentabilidade</h3>
+                            <p>Reduza o uso de papel e minimize erros operacionais, contribuindo para praticas mais ecologicas e responsaveis.</p>
+                        </div>
+                    </div>
+
+                    <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <span class="iccon-heart-1"></span>
+                            </div>
+                            <h3>Bem-estar</h3>
+                            <p>Comunicacao fluida que melhora relacoes, reduz estresse e cria um ambiente de trabalho mais harmonioso.</p>
+                        </div>
+                    </div>
+
+                    <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <span class="iccon-shield-1"></span>
+                            </div>
+                            <h3>Seguranca</h3>
+                            <p>Reporte falhas e incidentes em tempo real, permitindo acao rapida para prevenir acidentes.</p>
+                        </div>
+                    </div>
+
+                    <div class="c-xs-12 c-sm-6 c-lg-3 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <span class="iccon-users-1"></span>
+                            </div>
+                            <h3>Acessibilidade</h3>
+                            <p>Interface intuitiva para todos, independente do nivel tecnico. Todos tem voz na comunicacao.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="sobre" class="about p-80-tb xs-p-50-tb">
+            <div class="container">
+                <div class="row f-items-center gap-50">
+                    <div class="c-xs-12 c-md-6 wow fadeInLeft">
+                        <div class="about-image">
+                            <img src="imagens/imgFundo.jpg" alt="EficienSys em acao">
+                        </div>
+                    </div>
+                    <div class="c-xs-12 c-md-6 wow fadeInRight">
+                        <span class="section-tag">Sobre a Plataforma</span>
+                        <h2 class="section-title">Revolucione a comunicacao da sua empresa</h2>
+                        <p class="section-subtitle m-30-b">
+                            O EficienSys conecta todos os niveis hierarquicos de forma simples,
+                            rapida e eficiente, transformando a maneira como sua equipe trabalha.
+                        </p>
+
+                        <ul class="check-list">
+                            <li>
+                                <div class="check-icon"><span class="iccon-check-1"></span></div>
+                                <div>
+                                    <h4>Chat em Tempo Real</h4>
+                                    <p>Comunicacao instantanea entre equipes e departamentos, sem barreiras.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="check-icon"><span class="iccon-check-1"></span></div>
+                                <div>
+                                    <h4>Relatorios Inteligentes</h4>
+                                    <p>Acompanhe produtividade e tome decisoes baseadas em dados concretos.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="check-icon"><span class="iccon-check-1"></span></div>
+                                <div>
+                                    <h4>Integracao Completa</h4>
+                                    <p>Conecte com ferramentas de gestao, calendarios e muito mais.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="planos" class="pricing p-80-tb xs-p-50-tb">
+            <div class="container ps-relative">
+                <div class="text-center m-60-b wow fadeInUp">
+                    <span class="section-tag">Planos</span>
+                    <h2 class="section-title">Escolha o plano ideal</h2>
+                    <p class="section-subtitle m-auto-lr">
+                        Opcoes flexiveis para empresas de todos os tamanhos. Comece hoje!
+                    </p>
+                </div>
+
+                <div class="row gap-25 f-justify-center">
+                    <!-- Connect -->
+                    <div class="c-xs-12 c-sm-6 c-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="price-card">
+                            <h3>EficienSys <span>Connect</span></h3>
+                            <p class="price-desc">Para pequenas equipes</p>
+                            <div class="price-value">
+                                <span class="currency">R$</span>
+                                <span class="amount">19</span>
+                                <span class="period">,90/ano</span>
+                            </div>
+                            <ul class="price-features">
+                                <li><span class="iccon-check-1"></span> Chat em tempo real</li>
+                                <li><span class="iccon-check-1"></span> Compartilhamento de arquivos</li>
+                                <li><span class="iccon-check-1"></span> Relatorios basicos</li>
+                                <li><span class="iccon-check-1"></span> Suporte por email</li>
+                                <li><span class="iccon-check-1"></span> 15% desconto anual</li>
+                            </ul>
+                            <a href="#contato" class="btn btn-outline">Comecar Gratis</a>
+                        </div>
+                    </div>
+
+                    <!-- Pro -->
+                    <div class="c-xs-12 c-sm-6 c-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="price-card popular">
+                            <span class="popular-badge">Mais Popular</span>
+                            <h3>EficienSys <span>Pro</span></h3>
+                            <p class="price-desc">Para equipes em crescimento</p>
+                            <div class="price-value">
+                                <span class="currency">R$</span>
+                                <span class="amount">29</span>
+                                <span class="period">,80/ano</span>
+                            </div>
+                            <ul class="price-features">
+                                <li><span class="iccon-check-1"></span> Tudo do Connect +</li>
+                                <li><span class="iccon-check-1"></span> Integracao calendarios</li>
+                                <li><span class="iccon-check-1"></span> Relatorios avancados</li>
+                                <li><span class="iccon-check-1"></span> Treinamento online</li>
+                                <li><span class="iccon-check-1"></span> Suporte prioritario</li>
+                            </ul>
+                            <a href="#contato" class="btn btn-primary">Escolher Pro</a>
+                        </div>
+                    </div>
+
+                    <!-- Elite -->
+                    <div class="c-xs-12 c-sm-6 c-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="price-card">
+                            <h3>EficienSys <span>Elite</span></h3>
+                            <p class="price-desc">Para grandes empresas</p>
+                            <div class="price-value">
+                                <span class="currency">R$</span>
+                                <span class="amount">74</span>
+                                <span class="period">,40/ano</span>
+                            </div>
+                            <ul class="price-features">
+                                <li><span class="iccon-check-1"></span> Tudo do Pro +</li>
+                                <li><span class="iccon-check-1"></span> Consultoria estrategica</li>
+                                <li><span class="iccon-check-1"></span> IA e automacao</li>
+                                <li><span class="iccon-check-1"></span> Analise preditiva</li>
+                                <li><span class="iccon-check-1"></span> Acesso antecipado</li>
+                            </ul>
+                            <a href="#contato" class="btn btn-outline">Falar com Vendas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team p-80-tb xs-p-50-tb">
+            <div class="container">
+                <div class="text-center m-60-b wow fadeInUp">
+                    <span class="section-tag">Equipe</span>
+                    <h2 class="section-title">Quem faz o EficienSys</h2>
+                    <p class="section-subtitle m-auto-lr">
+                        Conheca os talentos por tras da nossa plataforma.
+                    </p>
+                </div>
+
+                <div class="row gap-20 f-justify-center">
+                    <div class="c-xs-6 c-sm-4 c-lg-2 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-card">
+                            <div class="team-icon"><span class="iccon-code-1"></span></div>
+                            <h4>Front<span>End</span></h4>
+                            <p>Jonathan<br>Leonardo</p>
+                        </div>
+                    </div>
+
+                    <div class="c-xs-6 c-sm-4 c-lg-2 wow fadeInUp" data-wow-delay="0.15s">
+                        <div class="team-card">
+                            <div class="team-icon"><span class="iccon-server-1"></span></div>
+                            <h4>Back<span>End</span></h4>
+                            <p>Sass</p>
+                        </div>
+                    </div>
+
+                    <div class="c-xs-6 c-sm-4 c-lg-2 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="team-card">
+                            <div class="team-icon"><span class="iccon-box-1"></span></div>
+                            <h4>Ware<span>house</span></h4>
+                            <p>Isaac<br>Gabriely</p>
+                        </div>
+                    </div>
+
+                    <div class="c-xs-6 c-sm-4 c-lg-2 wow fadeInUp" data-wow-delay="0.25s">
+                        <div class="team-card">
+                            <div class="team-icon"><span class="iccon-book-1"></span></div>
+                            <h4>Gui<span>a</span></h4>
+                            <p>Maria Vitoria<br>Rafael</p>
+                        </div>
+                    </div>
+
+                    <div class="c-xs-6 c-sm-4 c-lg-2 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="team-card">
+                            <div class="team-icon"><span class="iccon-star-1"></span></div>
+                            <h4>Geren<span>tes</span></h4>
+                            <p>Isaac<br>Nicoly<br>Rafael</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contato" class="contact p-80-tb xs-p-50-tb">
+            <div class="container">
+                <div class="row f-justify-center">
+                    <div class="c-xs-12 c-md-8 c-lg-6 wow fadeInUp">
+                        <div class="contact-form">
+                            <div class="text-center m-30-b">
+                                <span class="section-tag">Contato</span>
+                                <h2 class="section-title">Vamos conversar?</h2>
+                                <p class="section-subtitle m-auto-lr">
+                                    Tire suas duvidas ou solicite uma demonstracao.
+                                </p>
+                            </div>
+
+                            <form action="mailto:eficiensys@gmail.com" method="post" enctype="text/plain">
+                                <div class="form-group">
+                                    <label>Nome completo</label>
+                                    <input type="text" name="nome" class="form-input" placeholder="Digite seu nome" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="email" class="form-input" placeholder="seu@email.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Empresa</label>
+                                    <input type="text" name="empresa" class="form-input" placeholder="Nome da sua empresa">
+                                </div>
+                                <div class="form-group">
+                                    <label>Mensagem</label>
+                                    <textarea name="mensagem" class="form-input" placeholder="Como podemos ajudar?"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 f-justify-center">
+                                    <span class="iccon-send-1"></span>
+                                    Enviar Mensagem
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
-    <!--Rodape-->
-    <footer class="rodape">
-        <center><p>Projeto Expoete 2024 - 2º DS-B Tarde</p></center>
+
+    <!-- Footer -->
+    <footer class="footer p-50-tb">
+        <div class="container">
+            <div class="row f-items-center gap-30">
+                <div class="c-xs-12 c-md-4 text-center md-text-left">
+                    <div class="footer-logo">
+                        <img src="imagens/logoEficieSys.png" alt="EficienSys">
+                        <p>Comunicacao inteligente para empresas modernas.</p>
+                    </div>
+                </div>
+                <div class="c-xs-12 c-md-4 text-center">
+                    <p style="color: var(--gray-400);">
+                        <span style="color: var(--green-400);">Projeto Expoete 2024</span><br>
+                        2DS-B Tarde
+                    </p>
+                </div>
+                <div class="c-xs-12 c-md-4 text-center md-text-right">
+                    <a href="mailto:eficiensys@gmail.com" class="btn btn-outline" style="border-color: rgba(255,255,255,0.2); color: white;">
+                        <span class="iccon-mail-1"></span>
+                        eficiensys@gmail.com
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>Feito com dedicacao pela equipe EficienSys</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- Squeleton Scripts -->
+    <script src="https://cdn.squeleton.dev/squeleton-scripts.v4.min.js"></script>
+
+    <script>
+        // Initialize WOW.js
+        new WOW().init();
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const position = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({
+                        top: position,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
